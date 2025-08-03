@@ -1,0 +1,56 @@
+import styles from './Gallery.module.css';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router';
+import { useLanguage } from '../../context/LanguageContext';
+
+type GalleryItem = {
+    id: number;
+    image_path: string;
+    caption: string | null;
+    user_id: number;
+    created_at: string;
+    updated_at: string;
+};
+
+const IMAGES_PER_LOAD = 10;
+
+const API_HOST = import.meta.env.VITE_API_HOST;
+const GALLERY_ENDPOINT = `${API_HOST}/api/get-gallery`;
+
+export default function Gallery() {
+    const [gallery, setGallery] = useState<GalleryItem[]>([]);
+    const [visibleCount, setVisibleCount] = useState(IMAGES_PER_LOAD);
+
+    useEffect(() => {
+        fetch(GALLERY_ENDPOINT)
+            .then((res) => res.json())
+            .then((data) => setGallery(data))
+            .catch((err) => console.error('Failed to fetch gallery:', err));
+    }, []);
+
+    const handleScroll = useCallback(() => {
+        if (
+            window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 &&
+            visibleCount < gallery.length
+        ) {
+            setVisibleCount((prev) => Math.min(prev + IMAGES_PER_LOAD, gallery.length));
+        }
+    }, [visibleCount, gallery.length]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
+
+    return (
+        <section className={`${styles.gallery} component-padding max-width`}>
+            <div className={styles.masonryGrid}>
+                {gallery.slice(0, visibleCount).map((item) => (
+                    <div className={styles.masonryItem} key={item.id}>
+                        <img src={item.image_path} alt={item.caption || `Gallery ${item.id}`} className={styles.galleryImg} loading="lazy" />
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};

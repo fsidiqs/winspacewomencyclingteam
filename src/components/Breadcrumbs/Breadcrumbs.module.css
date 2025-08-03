@@ -1,0 +1,35 @@
+/* Breadcrumbs.module.css */
+.breadcrumbs-section {
+   background-color: #34455a;
+   padding: 40px 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: #fff;
+   text-align: center;
+   padding: 110px 0;
+   row-gap: 20px;
+   width: 100%;
+}
+
+.breadcrumbs-title {
+   font-size: 3.5rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+}
+
+.breadcrumbs {
+   /* font-family: "ubuntu", sans-serif; */
+   font-size: 1.2rem;
+   color: #fff;
+   font-family: "DM Sans", sans-serif;
+   font-weight: 600;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+}
+
+.breadcrumbs .separator {
+   margin: 0 0.5rem;
+   font-weight: normal;
+}

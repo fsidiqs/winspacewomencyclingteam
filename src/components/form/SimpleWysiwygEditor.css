@@ -1,0 +1,35 @@
+.simple-wysiwyg-content {
+  margin: 20px 0;
+}
+.simple-wysiwyg-editor {
+  min-height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  outline: none;
+}
+.btn-group .btn {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 0 1px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.btn-group .btn:hover {
+}
+.btn-group .btn[aria-label='bold'] { font-weight: bold; }
+.btn-group .btn[aria-label='italic'] { font-style: italic; }
+.btn-group .btn[aria-label='underline'] { text-decoration: underline; }
+.btn-group .btn[aria-label='strikeThrough'] { text-decoration: line-through; }
+
+/* Placeholder styling */
+.simple-wysiwyg-editor:empty:before {
+  content: attr(data-placeholder);
+  color: #aaa;
+  pointer-events: none;
+}

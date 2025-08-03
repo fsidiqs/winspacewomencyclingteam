@@ -1,0 +1,116 @@
+.mainNavbar {
+   display: none;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 40px;
+   height: 90px;
+   font-family: "DM Sans", sans-serif;
+   gap: 5rem;
+   max-width: 100%;
+   z-index: 1000;
+   position: relative;
+   color: white;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+.navbarLogo {
+   display: flex;
+   align-items: center;
+   flex: 1;
+}
+
+.navbarLogo img {
+   object-fit: contain;
+   max-width: 100%;
+   min-width: 250px;
+}
+
+.navbarLogoText {
+   line-height: 1;
+}
+
+.navbarLogoText span:first-child {
+   font-size: 18px;
+
+   font-weight: bold;
+}
+
+.navbarLogoText span:last-child {
+   font-size: 16px;
+   /* color: #23344a; */
+}
+
+.navbarLinksWrapper {
+   display: flex;
+   align-items: center;
+   justify-content: end;
+   gap: 32px;
+   flex: 5;
+}
+
+.navbarLinks {
+   display: flex;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   gap: 15px;
+}
+
+.navbarLinks li:last-child {
+   margin-right: 0;
+}
+
+.navbarLinks li a {
+   text-decoration: none;
+   color: white;
+   font-weight: 600;
+   padding-bottom: 2px;
+}
+
+/* .navbarLinks li.active a {
+  border-bottom: 2px solid #23344a;
+} */
+
+.navbarLang select {
+   background: transparent;
+   border: none;
+   font-size: 16px;
+   /* color: #23344a; */
+   font-weight: 600;
+   outline: none;
+   font-family: "DM Sans", sans-serif;
+}
+
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #232726;
+  color: #fff;
+  min-width: 200px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+  padding: 20px 0;
+  border-radius: 4px;
+}
+
+.dropdownItem {
+  padding: 10px 30px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dropdownItem:hover {
+  background: #2e3231;
+}
+
+@media (min-width: 900px) {
+   .mainNavbar {
+      display: flex;
+   }
+}
+
+

@@ -1,0 +1,285 @@
+import React, { useState } from 'react';
+import { Post, CreatePostData, PostApiPayload, Category, Tag } from '@/posts-manager/types/post';
+import { Button } from '@/posts-manager/components/ui/button';
+import { Input } from '@/posts-manager/components/ui/input';
+import { Label } from '@/posts-manager/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/posts-manager/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/posts-manager/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/posts-manager/components/ui/select';
+import { CategorySelector } from './CategorySelector';
+import { TagSelector } from './TagSelector';
+import { toast } from '@/posts-manager/hooks/use-toast';
+import MediaSelector, { MediaItem } from './MediaSelector';
+import { getAuth } from '@/admin/lib/localStorage';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { apiRequest } from '@/admin/lib/api';
+import { getImageUrl } from '@/lib/cleanUrl';
+
+
+
+const DEFAULT = `<h1 dir="auto" style="text-align: center">Rich Text Editor</h1>`
+
+interface PostFormProps {
+  post?: Post;
+  onSubmit: (data: PostApiPayload, method: 'POST' | 'PUT', postId: string | null, token: string | undefined) => void;
+  onCancel: () => void;
+  availableCategories: Category[];
+  availableTags: Tag[];
+  onCategoryCreated?: () => void; // Add this line
+}
+export const PostForm: React.FC<PostFormProps> = ({
+  post,
+  onSubmit,
+  onCancel,
+  availableCategories,
+  availableTags,
+  onCategoryCreated, // Add this line
+}) => {
+
+  const [content, setContent] = useState(DEFAULT)
+  const [theme, setTheme] = useState('light')
+  const [disable, setDisable] = useState(false)
+  const [loaded, setLoaded] = React.useState(false);
+
+  const [formData, setFormData] = React.useState<CreatePostData>({
+    title: { en: '', fr: '' },
+    content: { en: '', fr: '' },
+    featuredImage: '',
+    categoryIds: [],
+    tagIds: [],
+    status: 'draft',
+  });
+
+  const [selectedCategories, setSelectedCategories] = React.useState<Category[]>([]);
+  const [selectedTags, setSelectedTags] = React.useState<Tag[]>([]);
+  const [featuredMedia, setFeaturedMedia] = React.useState<MediaItem | null>(null);
+
+  React.useEffect(() => {
+    const fetchAndPopulatePost = async () => {
+      if (post && post.id) {
+        try {
+          const auth = getAuth();
+          const token = auth?.access_token;
+          const data = await apiRequest(`/api/posts/${post.id}`, 'GET', undefined, false, token);
+          setFormData({
+            title: { en: data.post_title_en || '', fr: data.post_title_fr || '' },
+            content: { en: data.content_en || '', fr: data.content_fr || '' },
+            featuredImage: data.photo || '',
+            categoryIds: data.categories ? data.categories.map((c: any) => c.id.toString()) : [],
+            tagIds: [], // You can map tags if available in data
+            status: data.status || 'draft',
+          });
+          setSelectedCategories(data.categories || []);
+          setSelectedTags([]); // You can set tags if available in data
+          setFeaturedMedia(data.photo ? { url: data.photo, alt_text: '', id: 0 } : null);
+          setLoaded(true);
+        } catch (err) {
+          setLoaded(true);
+        }
+      } else {
+        setLoaded(true);
+      }
+    };
+    fetchAndPopulatePost();
+  }, [post]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.title.en.trim() || !formData.title.fr.trim()) {
+      console.error("Title is required in both languages");
+      return;
+    }
+    if (!formData.content.en.trim() || !formData.content.fr.trim()) {
+      console.error("Content is required in both languages");
+      return;
+    }
+
+    const isEdit = Boolean(post && post.id);
+    const method = isEdit ? 'PUT' : 'POST';
+    const postId = isEdit ? post!.id : null;
+    const auth = getAuth();
+    const token = auth?.access_token;
+    // Compose API payload as required by backend, now including categories
+    const apiPayload: PostApiPayload = {
+      post_title_en: formData.title.en,
+      post_title_fr: formData.title.fr,
+      content_en: formData.content.en,
+      content_fr: formData.content.fr,
+      status: formData.status === 'active' ? 'active' : formData.status,
+      photo: (featuredMedia ? featuredMedia.url : formData.featuredImage) || '',
+      categories: selectedCategories.map(c => Number(c.id)), // Ensure IDs are numbers for API
+    };
+    onSubmit(apiPayload, method, postId, token);
+  };
+
+  const quillModules = {
+    toolbar: [
+      [{ 'font': [] }],
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'align': [] }],
+      ['link', 'image', 'video'],
+      ['clean'],
+    ],
+  };
+
+  return (
+    <Card className="mx-auto">
+      <CardHeader>
+        <CardTitle className="text-2xl">
+          {post ? 'Edit Post' : 'Create New Post'}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        {!loaded ? (
+          <div className="flex flex-col items-center justify-center min-h-[300px]">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+            <div className="text-gray-500">Loading post data...</div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Featured Image */}
+            <div className="space-y-2">
+              <Label htmlFor="featuredImage">Featured Image</Label>
+              <MediaSelector selectedMedia={featuredMedia} onSelect={setFeaturedMedia as (media: MediaItem) => void} />
+              {featuredMedia && (
+                <div className="mt-2">
+                  <img
+                    src={getImageUrl(featuredMedia.url)}
+                    alt={featuredMedia.alt_text || "Preview"}
+                    className="w-full h-auto object-contain rounded-lg border"
+                  />
+                </div>
+              )}
+
+            </div>
+
+            {/* Titles */}
+            <div className="space-y-4">
+              <Label className="text-base font-semibold">Post Titles</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="title-en">Title (English) *</Label>
+                  <Input
+                    id="title-en"
+                    value={formData.title.en}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      title: { ...formData.title, en: e.target.value }
+                    })}
+                    placeholder="Enter English title"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="title-fr">Title (French) *</Label>
+                  <Input
+                    id="title-fr"
+                    value={formData.title.fr}
+                    onChange={(e) => setFormData({
+                      ...formData,
+                      title: { ...formData.title, fr: e.target.value }
+                    })}
+                    placeholder="Entrez le titre français"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="space-y-4">
+              <Label className="text-base font-semibold">Post Content</Label>
+              <Tabs defaultValue="en" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="en">English Content</TabsTrigger>
+                  <TabsTrigger value="fr">French Content</TabsTrigger>
+                </TabsList>
+                <TabsContent value="en" className="mt-4">
+                  {loaded && (
+                    <ReactQuill
+                      theme="snow"
+                      value={formData.content.en}
+                      onChange={value => setFormData({
+                        ...formData,
+                        content: { ...formData.content, en: value }
+                      })}
+                      style={{ minHeight: 200, marginBottom: 8 }}
+                      modules={quillModules}
+                    />
+                  )}
+                  <div className="text-gray-400 text-xs mt-1">Write your post content in English...</div>
+                </TabsContent>
+                <TabsContent value="fr" className="mt-4">
+                  {loaded && (
+                    <ReactQuill
+                      theme="snow"
+                      value={formData.content.fr}
+                      onChange={value => setFormData({
+                        ...formData,
+                        content: { ...formData.content, fr: value }
+                      })}
+                      style={{ minHeight: 200, marginBottom: 8 }}
+                      modules={quillModules}
+                    />
+                  )}
+                  <div className="text-gray-400 text-xs mt-1">Rédigez le contenu de votre article en français...</div>
+                </TabsContent>
+              </Tabs>
+            </div>
+
+            {/* Categories and Tags */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <CategorySelector
+                categories={availableCategories}
+                selectedCategories={selectedCategories}
+                onCategoriesChange={setSelectedCategories}
+                availableCategories={availableCategories}
+                onCategoryCreated={onCategoryCreated} // Pass the prop here
+              />
+              <TagSelector
+                selectedTags={selectedTags}
+                onTagsChange={setSelectedTags}
+                availableTags={availableTags}
+              />
+            </div>
+
+            {/* Status */}
+            <div className="space-y-2">
+              <Label htmlFor="status">Status</Label>
+              <Select
+                value={formData.status}
+                onValueChange={(value: 'draft' | 'active') =>
+                  setFormData({ ...formData, status: value })
+                }
+              >
+                <SelectTrigger className="w-48">
+                  <SelectValue placeholder="Select status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="draft">Draft</SelectItem>
+                  <SelectItem value="active">Active</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Form Actions */}
+            <div className="flex gap-4 pt-6 border-t">
+              <Button type="submit" className="px-8">
+                {post ? 'Update Post' : 'Create Post'}
+              </Button>
+              <Button type="button" variant="outline" onClick={onCancel}>
+                Cancel
+              </Button>
+            </div>
+          </form>
+        )}
+      </CardContent>
+    </Card>
+  );
+};

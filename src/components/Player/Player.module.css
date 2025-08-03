@@ -1,0 +1,133 @@
+.playerProfileContainer {
+    max-width: 1200px;
+    margin: 16px auto 0 auto;
+    padding: 0 16px 40px 16px;
+}
+
+.playerProfileGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    background: transparent;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.playerImageBox {
+    background: #fff;
+    padding: 32px;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playerImg {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    border-radius: 0;
+    display: block;
+}
+
+.playerInfoBox {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    padding: 32px 32px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.playerInfoRow {
+    margin-bottom: 12px;
+}
+
+.playerInfoRow h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #111;
+}
+
+.playerInfoValue {
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.flagIcon {
+    width: 22px;
+    height: 16px;
+    margin-right: 8px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.currentTeam span {
+    color: #d35400;
+    font-weight: 500;
+}
+
+.pastTeam span {
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+.playerProfileContainer hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 12px 0;
+}
+
+.playerTabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+}
+
+.tab {
+    padding: 14px 38px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    background: #fff;
+    color: #111;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: background 0.2s, border-bottom 0.2s;
+}
+
+.tabActive {
+    background: #111;
+    color: #fff;
+    border-bottom: 3px solid #111;
+}
+
+.playerTabContent {
+    background: transparent;
+    padding: 32px 0 0 0;
+    font-size: 17px;
+    color: #444;
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .playerProfileGrid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .playerImageBox, .playerInfoBox {
+        padding: 20px;
+    }
+    .playerImg {
+        max-width: 100%;
+    }
+}

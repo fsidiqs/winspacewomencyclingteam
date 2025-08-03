@@ -1,0 +1,93 @@
+/* QuotesSection.module.css */
+.quotesContainer {
+    display: flex;
+    min-height: 80vh;
+    background: #181c1b;
+    width: 100%;
+}
+
+.quotesImage {
+    flex: 1 1 50%;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    overflow: hidden;
+}
+
+.quotesImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.quotesSection {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.quoteContent {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+.quoteIcon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.quoteText {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #d1d1d1;
+}
+
+.quoteAuthor {
+    color: white;
+    
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.quoteAuthor span {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #b0b0b0;
+}
+
+.quoteDots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #444;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.dotActive {
+    background: #fff;
+}
+
+@media (max-width: 900px) {
+    .quotesContainer {
+        flex-direction: column;
+    }
+    .quotesImage, .quotesSection {
+        flex: 1 1 100%;
+        min-height: 250px;
+    }
+}

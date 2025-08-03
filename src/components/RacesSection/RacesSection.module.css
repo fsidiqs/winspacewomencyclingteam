@@ -1,0 +1,222 @@
+.races-section-wrapper {
+   background: #fbeee3;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
+
+.races-section {
+   width: 100%;
+   max-width: 1200px;
+   margin: 0 2rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 40px;
+   width: 100%;
+}
+
+.races-section__header {
+   text-align: center;
+   margin-bottom: 36px;
+}
+.races-section__header span {
+   font-size: 1rem;
+   font-weight: 600;
+   letter-spacing: 1px;
+   color: #222;
+}
+.races-section__header h2 {
+   font-size: 3.1rem;
+   font-weight: 600;
+   margin: 10px 0 0 0;
+   color: #222;
+   letter-spacing: 1px;
+}
+
+.races-table-container {
+   width: 100%;
+   background: #fff;
+   border-radius: 0.3rem;
+   overflow: hidden;
+   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+   margin-bottom: 40px;
+}
+
+.races-table {
+   display: flex;
+   width: 100%;
+   align-items: center;
+   border-bottom: 1px solid #e6e6e6;
+   background: #f6f8f6;
+}
+.races-table--header {
+   background: #37475a;
+   color: #fff;
+   font-weight: 700;
+   font-size: 1.1rem;
+}
+.races-table--header .races-table__cell {
+   padding: 18px 0;
+}
+.races-table--row {
+   background: #f6f8f6;
+   font-size: 1.08rem;
+   font-weight: 500;
+   transition: background 0.2s;
+}
+.races-table--row:hover {
+   background: #f0f4f0;
+}
+
+.races-table__cell {
+   flex: 1 1 0;
+   padding: 18px 16px;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   border-right: 1px solid #e6e6e6;
+}
+.races-table__cell--country {
+   flex: 0 0 120px;
+   justify-content: center;
+}
+.races-table__cell--date {
+   flex: 0 0 220px;
+   color: #37475a;
+   font-weight: 600;
+}
+.races-table__cell--race {
+   flex: 2 1 0;
+   color: #37475a;
+   /* font-weight: 700; */
+   justify-content: flex-start;
+}
+.races-table__cell:last-child {
+   border-right: none;
+}
+.flag {
+   width: 38px;
+   height: 28px;
+   object-fit: cover;
+   border-radius: 4px;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.races-section__footer {
+   display: flex;
+   justify-content: center;
+   width: 100%;
+   margin-top: 30px;
+}
+.races-section__btn {
+   background: #ff8c5a;
+   color: #fff;
+   border: none;
+   border-radius: 50px;
+   padding: 18px 48px;
+   font-size: 1.1rem;
+   font-weight: 600;
+   cursor: pointer;
+   transition: background 0.2s;
+}
+.races-section__btn:hover {
+   background: #ff6a1a;
+}
+
+.standingsTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  margin-bottom: 40px;
+}
+.standingsTable tr th {
+   background: var(--dark-blue);
+  /* background: var(--lightblue); */
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top: 6px solid #e74c3c;
+}
+.standingsTable__th {
+  padding: 18px 0;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.standingsTable__rowEven {
+  background: #fafafa;
+}
+.standingsTable__rowOdd {
+  background: #fff;
+}
+.standingsTable__td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: black;
+  vertical-align: middle;
+}
+.standingsTable__logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.standingsTable__teamName {
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 1.08rem;
+  vertical-align: middle;
+}
+/* .standingsTable__td {
+  display: flex;
+  align-items: center;
+} */
+.standingsTable__td:not(:first-child):not(:last-child) {
+  justify-content: center;
+}
+.standingsTable__td:last-child {
+  font-weight: 700;
+}
+
+td {
+   color: black;;
+}
+
+@media (max-width: 900px) {
+   .races-section {
+      padding: 0 10px;
+   }
+   .races-table__cell {
+      font-size: 0.98rem;
+      padding: 12px 6px;
+   }
+   .races-section__header h2 {
+      font-size: 2.1rem;
+   }
+   .races-table__cell--country {
+      flex: 0 0 60px;
+   }
+   .races-table__cell--date {
+      flex: 0 0 120px;
+   }
+   .standingsTable__th, .standingsTable__td {
+    font-size: 0.98rem;
+    padding: 12px 6px;
+  }
+  .standingsTable__logo {
+    width: 28px;
+    height: 28px;
+    margin-right: 6px;
+  }
+}

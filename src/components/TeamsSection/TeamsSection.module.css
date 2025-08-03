@@ -1,0 +1,105 @@
+.teamSectionWrapper {
+    width: 100%;
+    padding-top: 50px;
+}
+
+.teamSection {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.teamHeader {
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 32px;
+}
+
+.teamHeader h4 {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    color: #222;
+    margin: 0 0 12px 0;
+}
+
+.teamHeader h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.teamGrid {
+    display: flex;
+    gap: 40px;
+    max-width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.teamCard {
+    width: 400px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.teamCard:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.teamImg {
+    width: 100%;
+    display: block;
+}
+
+.teamCard img {
+    width: 100%;
+    height: 500px !important;
+    object-fit: cover;
+}
+
+.teamInfo {
+    padding: 24px 20px 20px 0px;
+}
+
+.teamInfo h2 {
+    margin: 0 0 8px 0;
+    font-size: 26px;
+    font-weight: 600;
+    color: #222;
+}
+
+.teamInfo p {
+    margin: 0;
+    font-size: 17px;
+    color: #888;
+}
+
+@media (max-width: 900px) {
+    .teamGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        width: 95vw;
+    }
+    .teamHeader h1 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .teamGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .teamHeader h1 {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,79 @@
+[
+   {
+      "name": "AURELA NERLO",
+      "nationality": "POLAND",
+      "flag_code": "PL",
+      "img": "riders/aurela-1.png",
+      "date of birth": "11/02/1998"
+   },
+   {
+      "name": "CAMILLE FAHY",
+      "nationality": "FRANCE",
+      "flag_code": "FR",
+      "img": "riders/camille-1.png",
+      "date of birth": "07/07/2003"
+   },
+   {
+      "name": "CONSTANCE VALENTIN",
+      "nationality": "FRANCE",
+      "flag_code": "FR",
+      "img": "riders/constance-1.png",
+      "date of birth": "19/03/1998"
+   },
+   {
+      "name": "FIONA MANGAN",
+      "nationality": "IRELAND",
+      "flag_code": "IE",
+      "img": "riders/fiona-1.png",
+      "date of birth": "16/05/1996"
+   },
+   {
+      "name": "FLORENCE NORMAND",
+      "nationality": "CANADA",
+      "flag_code": "CA",
+      "img": "riders/potraits-04-04.png",
+      "date of birth": "05/10/2002"
+   },
+   {
+      "name": "JENAYA FRANCIS",
+      "nationality": "CANADA",
+      "flag_code": "CA",
+      "img": "riders/jenaya-1.png",
+      "date of birth": "08/09/2004"
+   },
+   {
+      "name": "KAROLINA PEREKITKO",
+      "nationality": "POLAND",
+      "flag_code": "PL",
+      "img": "riders/karolina-1.png",
+      "date of birth": "01/10/1998"
+   },
+   {
+      "name": "KIARA LYLYK",
+      "nationality": "CANADA",
+      "flag_code": "CA",
+      "img": "riders/kiara-1.png",
+      "date of birth": "09/06/2004"
+   },
+   {
+      "name": "MARIE-MORGANE LE DEUNFF",
+      "nationality": "FRANCE",
+      "flag_code": "FR",
+      "img": "riders/marie-2.png",
+      "date of birth": "14/05/2002"
+   },
+   {
+      "name": "MARINE ALLIONE",
+      "nationality": "FRANCE",
+      "flag_code": "FR",
+      "img": "riders/marine-1.png",
+      "date of birth": "07/04/2001"
+   },
+   {
+      "name": "NADIA GONTOVA",
+      "nationality": "CANADA",
+      "flag_code": "CA",
+      "img": "riders/nadia-1.png",
+      "date of birth": "07/08/2000"
+   }
+]

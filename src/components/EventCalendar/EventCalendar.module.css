@@ -1,0 +1,160 @@
+.calendarWrapper {
+   display: none;
+   background: #f5e3ce;
+   padding: 32px 16px;
+   border-radius: 12px;
+   max-width: 100%;
+   margin: 0 auto;
+   font-family: "Inter", Arial, sans-serif;
+}
+
+@media (min-width: 769px) {
+   .calendarWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+}
+.calendarWrapper {
+}
+
+.calendarHeader {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   margin-bottom: 16px;
+}
+
+.calendarHeader button {
+   background: #fff;
+   border: none;
+   border-radius: 20px;
+   padding: 8px 18px;
+   font-weight: 600;
+   font-size: 1rem;
+   color: #222;
+   cursor: pointer;
+}
+.calendarHeader button:hover {
+   background: #e6d3b8;
+}
+
+.calendarHeader select,
+.calendarHeader input[type="number"] {
+   background: #fff;
+   border: none;
+   border-radius: 20px;
+   padding: 8px 18px;
+   font-size: 1rem;
+   font-weight: 600;
+   color: #222;
+   outline: none;
+}
+
+.calendarTableWrapper {
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .calendarTableWrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.calendarTable {
+   max-width: 100%;;
+   border-collapse: separate;
+   border-spacing: 0;
+   background: transparent;
+}
+
+.calendarTable th {
+   font-size: 1rem;
+   font-weight: 600;
+   color: #222;
+   padding-bottom: 8px;
+   background: transparent;
+   text-align: start;
+}
+
+.calendarTable td {
+   background: transparent;
+   border: none;
+   min-width: 150px;
+   height: 150px;
+   vertical-align: top;
+   padding: 0 4px 4px 0;
+   position: relative;
+}
+
+.calendarTable td strong {
+   font-size: 1.1rem;
+   color: #222;
+   font-weight: 600;
+}
+
+.eventItem {
+   font-size: 0.95rem;
+   background: #fff;
+   color: #222;
+   margin: 4px 0 0 0;
+   border-radius: 6px;
+   padding: 4px 8px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-weight: 500;
+   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+   max-width: 200px;
+}
+
+.eventPopup {
+  width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  padding: 0 0 16px 0;
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Inter", Arial, sans-serif;
+  transition: box-shadow 0.2s;
+}
+.eventPopupImg {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  margin-bottom: 8px;
+}
+.eventPopupDate {
+  color: #888;
+  font-size: 0.95rem;
+  margin: 12px 16px 0 16px;
+}
+.eventPopupTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 8px 16px 0 16px;
+  color: #111;
+}
+.eventPopupDesc {
+  font-size: 1rem;
+  color: #444;
+  margin: 8px 16px 0 16px;
+  line-height: 1.5;
+}
+.eventPopupPrice {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111;
+  margin: 12px 16px 0 16px;
+}

@@ -1,0 +1,167 @@
+
+/* Comments Section Styles */
+.comments-section {
+  margin: 80px 0;
+  padding: 40px 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.comments-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #1a1a1a;
+}
+
+/* Comment Form */
+.comment-form {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 50px;
+}
+
+.comment-form h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.comment-input,
+.comment-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.comment-input:focus,
+.comment-textarea:focus {
+  outline: none;
+  border-color: #007cba;
+  box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.1);
+}
+
+.comment-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.comment-submit-btn {
+  background: #007cba;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comment-submit-btn:hover {
+  background: #005a87;
+  transform: translateY(-1px);
+}
+
+.comment-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Comments List */
+.comments-list {
+  margin-top: 40px;
+}
+
+.comment {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.comment:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.comment-avatar {
+  flex-shrink: 0;
+}
+
+.comment-avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.comment-author {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.comment-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.comment-text {
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .comments-section {
+    margin: 60px 0;
+    padding: 30px 0;
+  }
+  
+  .comments-title {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
+  
+  .comment-form {
+    padding: 20px;
+  }
+  
+  .comment-form h3 {
+    font-size: 1.25rem;
+  }
+  
+  .comment {
+    gap: 12px;
+  }
+  
+  .comment-avatar img {
+    width: 40px;
+    height: 40px;
+  }
+}

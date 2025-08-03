@@ -1,0 +1,183 @@
+/* Topbar for logo and hamburger */
+.navTopbar {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   /* position: fixed; */
+   top: 0;
+   left: 0;
+   z-index: 1200;
+   background: #1b1f1e;
+   padding: 0 20px;
+   height: 64px;
+   box-sizing: border-box;
+   max-width: 100%;
+}
+.navLogoTopbar {
+   height: 48px;
+   margin: 0;
+}
+
+/* Hamburger icon */
+.navHamburger {
+   width: 32px;
+   height: 32px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 6px;
+   cursor: pointer;
+   z-index: 1201;
+   position: static;
+}
+.navHamburger span {
+   display: block;
+   height: 4px;
+   width: 100%;
+   background: #fff;
+   border-radius: 2px;
+   transition: 0.3s;
+}
+
+/* Overlay menu - fullscreen and slides down */
+.navMenu {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 100vw;
+   height: 100vh;
+   background: #1b1f1e;
+   color: #fff;
+   z-index: 1100;
+   transform: translateY(-100%);
+   transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 32px 0 0 0;
+}
+.navMenuOpen {
+   transform: translateY(0);
+}
+
+.navHeader {
+   width: 90%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 32px;
+}
+.navLogo {
+   height: 60px;
+}
+.navClose {
+   font-size: 2.5rem;
+   cursor: pointer;
+   color: #fff;
+}
+
+.navLinks {
+   list-style: none;
+   padding: 0;
+   margin: 0 0 32px 0;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: start;
+   gap: 18px;
+}
+.navLinks li a {
+   color: #fff;
+   text-decoration: none;
+   font-size: 1.4rem;
+   font-weight: 500;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   transition: color 0.2s;
+}
+.navLinks li a:hover {
+   color: #e0e0e0;
+}
+
+.navHr {
+   width: 90%;
+   border: 0;
+   border-top: 1px solid #333;
+   margin: 24px 0;
+}
+
+.navSocial {
+   display: flex;
+   gap: 18px;
+   justify-content: center;
+   width: 100%;
+}
+.navSocial a {
+   color: #fff;
+   font-size: 1.3rem;
+   transition: color 0.2s;
+}
+.navSocial a:hover {
+   color: #e0e0e0;
+}
+
+.navMenu {
+   width: 100%;
+   left: 0;
+   right: 0;
+   border-radius: 0;
+}
+.navHamburger {
+   left: 40px;
+}
+
+/* Mobile dropdown submenu under Events */
+.mobileDropdown {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+.mobileDropdown li {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0.3rem 0;
+}
+.mobileDropdown li a {
+  color: #fff;
+  text-decoration: none;
+  padding-left: 0.5rem;
+  display: block;
+}
+.mobileDropdown li a:hover {
+  color: #e0e0e0;
+}
+
+.dropdownToggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #fff;
+  user-select: none;
+}
+.dropdownToggle:hover {
+  color: #e0e0e0;
+}
+.dropdownArrow {
+  margin-left: 8px;
+  font-size: 1.3rem;
+}
+
+@media (min-width: 900px) {
+   .navTopbar {
+      display: none;
+   }
+}

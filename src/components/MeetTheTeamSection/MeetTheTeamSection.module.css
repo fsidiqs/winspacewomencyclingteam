@@ -1,0 +1,121 @@
+/* MeetTheTeamSection.module.css */
+.teamSection {
+   width: 100%;
+   padding: 40px 0;
+   text-align: center;
+}
+.teamHeader {
+   margin-bottom: 32px;
+}
+.teamLabel {
+   color: black;
+   font-size: 1rem;
+   letter-spacing: 2px;
+   margin-bottom: 8px;
+   font-weight: 600;
+}
+.teamTitle {
+   color: black;
+   font-size: 2.5rem;
+   font-weight: 600;
+   margin: 0;
+}
+.teamSliderContainer {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   max-width: 1200px;
+   margin: 0 auto;
+   position: relative;
+}
+.sliderBtn {
+   background: #fff;
+   border: none;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   font-size: 1.5rem;
+   color: #3a4b5c;
+   cursor: pointer;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+   transition: background 0.2s;
+   z-index: 2;
+}
+.sliderBtn:hover {
+   background: #e0e6ed;
+}
+.left {
+   margin-right: 12px;
+}
+.right {
+   margin-left: 12px;
+}
+.teamSlider {
+   display: flex;
+   overflow-x: auto;
+   scroll-behavior: smooth;
+   gap: 32px;
+   padding: 16px 0 8px 0;
+   scrollbar-width: thin;
+   scrollbar-color: #fff #3a4b5c;
+   cursor: grab;
+}
+.teamSlider.active {
+   cursor: grabbing;
+}
+.teamSlider::-webkit-scrollbar {
+   height: 8px;
+}
+.teamSlider::-webkit-scrollbar-thumb {
+   background: #fff;
+   border-radius: 4px;
+}
+.teamSlider::-webkit-scrollbar-track {
+   background: #3a4b5c;
+}
+.teamMember {
+   border-radius: 8px;
+   min-width: 240px;
+   max-width: 240px;
+   flex: 0 0 240px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-bottom: 8px;
+}
+.teamMember img {
+   width: 100%;
+   height: auto;
+   object-fit: cover;
+   border-radius: 4px;
+   margin-bottom: 18px;
+   background: #e0e6ed;
+}
+.memberName {
+   color: #233142;
+   font-size: 1.1rem;
+   font-weight: 600;
+   margin: 0;
+   letter-spacing: 1px;
+   text-align: center;
+}
+@media (max-width: 900px) {
+   .teamTitle {
+      font-size: 2.2rem;
+   }
+   .teamSliderContainer {
+      max-width: 98vw;
+   }
+   .teamMember {
+      min-width: unset;
+      max-width: 180px;
+      padding: unset;
+   }
+   .teamMember img {
+      width: 120px;
+      height: 150px;
+   }
+   .teamSlider {
+      gap: 0;
+   }
+}

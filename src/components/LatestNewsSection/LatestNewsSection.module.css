@@ -1,0 +1,126 @@
+/* LatestNewsSection.module.css */
+.latestNewsSection {
+   max-width: 1400px;
+   margin: 60px auto;
+   background: none;
+}
+.latestNewsHeader {
+   text-align: center;
+   margin-bottom: 40px;
+}
+.latestNewsLabel {
+   display: block;
+   font-size: 16px;
+   letter-spacing: 1.5px;
+   color: #222;
+   margin-bottom: 8px;
+   font-weight: 600;
+}
+.latestNewsTitle {
+   font-size: 40px;
+   font-weight: 700;
+   margin: 0;
+   color: #222;
+}
+.latestNewsCards {
+   display: flex;
+   gap: 40px;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+.newsCard {
+   position: relative;
+   max-width: 25%;
+   height: 340px;
+   border-radius: 4px;
+   overflow: hidden;
+   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+   background: #000;
+   display: flex;
+   align-items: flex-end;
+}
+.newsCardImg {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   z-index: 1;
+}
+.newsCardOverlay {
+   position: relative;
+   z-index: 2;
+   background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.7) 60%,
+      rgba(0, 0, 0, 0.1) 100%
+   );
+   color: #fff;
+   padding: 32px 28px 36px 28px;
+   width: 100%;
+   min-height: 220px;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+}
+.newsCardMeta {
+   font-size: 15px;
+   font-weight: 600;
+   letter-spacing: 1px;
+   margin-bottom: 12px;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+}
+.newsCardTrending {
+   font-weight: 700;
+}
+.newsCardDot {
+   font-size: 18px;
+   line-height: 0;
+}
+.newsCardDate {
+   font-weight: 400;
+   opacity: 0.85;
+}
+.newsCardTitle {
+   font-size: 26px;
+   font-weight: 700;
+   margin: 0 0 18px 0;
+   line-height: 1.18;
+}
+.newsCardArrow {
+   font-size: 28px;
+   font-weight: 400;
+   margin-top: auto;
+   opacity: 0.9;
+   transition: transform 0.2s;
+   cursor: pointer;
+}
+.newsCard:hover .newsCardArrow {
+   transform: translateX(6px);
+}
+@media (max-width: 1200px) {
+   .latestNewsCards {
+      gap: 24px;
+   }
+   .newsCard {
+      width: 320px;
+      height: 370px;
+   }
+}
+@media (max-width: 900px) {
+   .latestNewsCards {
+      flex-direction: column;
+      align-items: center;
+   }
+   .newsCard {
+      max-width: 100%;
+   }
+   .latestNewsTitle {
+      font-size: 36px;
+   }
+}

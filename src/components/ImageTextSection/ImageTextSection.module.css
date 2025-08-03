@@ -1,0 +1,66 @@
+.imageTextSection {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: black;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+.imageTextGrid {
+   display: grid;
+   grid-template-columns: 1fr 1.5fr;
+   gap: 60px;
+   align-items: center;
+   width: 80vw;
+   max-width: 1400px;
+}
+
+.imageTextImg img {
+   width: 100%;
+   max-width: 420px;
+   height: auto;
+   border-radius: 0;
+   object-fit: cover;
+   display: block;
+}
+
+.imageTextContent h4 {
+   margin: 0 0 18px 0;
+   font-size: 18px;
+   letter-spacing: 2px;
+   font-weight: 700;
+   color: #111;
+}
+
+.imageTextContent h1 {
+   margin: 0 0 24px 0;
+   font-size: 56px;
+   font-weight: 800;
+   letter-spacing: 1px;
+   color: #111;
+}
+
+.imageTextContent p {
+   font-size: 20px;
+   color: #222;
+   line-height: 1.6;
+   margin: 0;
+}
+
+@media (max-width: 900px) {
+   .imageTextGrid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      width: 95vw;
+   }
+   .imageTextContent h1 {
+      font-size: 36px;
+   }
+   .imageTextContent p {
+      font-size: 18px;
+   }
+   .imageTextImg img {
+      max-width: 100%;
+   }
+}

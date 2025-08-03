@@ -1,0 +1,80 @@
+/* Footer.module.css */
+.footer {
+  background: #3a3a3a;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0 0 0;
+  width: 100%;
+
+}
+.footerLogo {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+.footerNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.footerNav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.footerNav a:hover {
+  color: #bdbdbd;
+}
+.footerSocial {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+.footerSocial a {
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+.footerSocial a:hover {
+  background: #555;
+  color: #fff;
+}
+.footerCopy {
+  border-top: 1px solid #444;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 18px 0 18px 0;
+  font-size: 1rem;
+  color: #bdbdbd;
+  max-width: 80vw;
+}
+@media (max-width: 700px) {
+  .footerLogo {
+    font-size: 2.5rem;
+  }
+  .footerNav {
+    gap: 12px;
+    font-size: 0.95rem;
+  }
+  .footerSocial a {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  .footerCopy {
+    font-size: 0.95rem;
+  }
+}
